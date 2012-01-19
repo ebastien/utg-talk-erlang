@@ -1,6 +1,6 @@
 !SLIDE 
 # Erlang #
-## ##
+## Quick overview ##
 <div class="title_desc">
   <ul>
     <li>Emmanuel Bastien</li>
@@ -14,6 +14,7 @@
 * Emmanuel Bastien (@ebastien)
 * Development Support for DEV-ORI
 * Co-organizer of [Riviera Ruby Group](http://rivierarb.fr)
+  ([@rivierarb](http://twitter.com/rivierarb))
 
 !SLIDE
 ## Why learning Erlang? ##
@@ -27,14 +28,21 @@
 * A proprietary language at Ericsson from 1986 to 1998
 * Initialy developped by Joe Armstrong
 * Open sourced in 1998
-* A programming language to tackle concrete, industrial issues in the
+* A language to tackle concrete, industrial issues in the
   field of telephony
+
+!SLIDE
+## Erlang today ##
+* Riak
+* CouchDB / Membase
+* RabbitMQ
+* ejabberd
 
 !SLIDE
 ## The Erlang language ##
 * Functional
-* Concurrent
 * Simple
+* Concurrent
 * Pragmatic
 
 !SLIDE
@@ -66,7 +74,8 @@
 !SLIDE
 ## Higher order functions ##
     @@@erlang
-    lists:foldl(fun(X, Sum) -> X + Sum end, 0, [1,2,3,4]).
+    Y = lists:foldl(fun(X, Sum) -> X + Sum end, 0, [1,2,3]).
+    Y. % 6
 
 !SLIDE
 ## A simple language ##
@@ -74,6 +83,12 @@
 * 7 primitive types: Integers, Atoms, Floats, Binaries, Funs, Tuples, Lists
 * 3 technical types: References, Pids, Ports
 * Libraries for arrays, sets, dictionaries... derived from primitive types
+
+!SLIDE
+## Persistent data structures ##
+* No mutable state
+* Easier to reason about
+* Share without locking
 
 !SLIDE
 ## Bit syntax ##
@@ -85,10 +100,31 @@
       Payload/binary>> = SomeBinary.
 
 !SLIDE
+## Record syntax ##
+
+!SLIDE
 ## A concurrent language ##
 * A process is a, lightweight, first-class citizen.
 * Inter-process communication follows the Actor model (i.e share nothing).
-* Concurrency =/= Prallelism
+* Concurrency =/= Parallelism
+
+!SLIDE
+## Inter-process message queuing ##
+    @@@erlang
+    loop() ->
+      receive
+        hello -> io:format("Hello!~n");
+        _ -> loop()
+      end
+    end.
+    
+    P = spawn(fun loop/0, []).
+    % <...>
+    P ! hello.
+    % Hello!
+
+!SLIDE
+## A pragmatic language ##
 
 !SLIDE
 ## Runtime ##
@@ -98,12 +134,46 @@
 * An OS inside your OS
 
 !SLIDE
+## NIF ##
+    @@@C
+    #include <erl_nif.h>
+    static ERL_NIF_TERM
+    orthodromic_distance(ErlNifEnv *env, int argc,
+                         const ERL_NIF_TERM argv[])
+    {
+      double LonA, LatA, LonB, LatB;
+      if (!enif_get_double(env, argv[0], &LonA))
+        return enif_make_badarg(env);
+      // ...
+      double Distance = 2*EARTH_RADIUS*asin(
+        sqrt(SinLat*SinLat +
+             cos(LatA)*cos(LatB)*SinLon*SinLon));
+      return enif_make_double(env, Distance);
+    }
+
+!SLIDE
+## NIF ##
+    @@@C
+    static ErlNifFunc nif_funcs[] = {
+      {"orthodromic_distance", 4, orthodromic_distance}
+    };
+    
+    ERL_NIF_INIT(sched_nif,
+                 nif_funcs, load, reload, NULL, NULL)
+
+!SLIDE
+## Multicore support ##
+* SMP support implemented in 2006
+* Separate heaps vs. shared heap
+* Zero-copy messaging not here yet
+
+!SLIDE
 ## Erlang sweet spots ##
 * Binary protocols
 * Massively concurrent servers
 
 !SLIDE
-## Références ##
+## References ##
 * <a href="http://www.erlang.org/doc">http://www.erlang.org/doc</a>
 * <a href="http://learnyousomeerlang.com/">http://learnyousomeerlang.com/</a>
 * <a href=""></a>
