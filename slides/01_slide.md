@@ -43,6 +43,7 @@
 * Functional
 * Simple
 * Concurrent
+* Distributed
 * Pragmatic
 
 !SLIDE
@@ -101,6 +102,18 @@
 
 !SLIDE
 ## Record syntax ##
+    @@@erlang
+    -record(flight_period, {flight_key, legs, segments}).
+    
+    Period = #flight_period{
+      flight_key = K,
+      legs = [L1, L2],
+      segments = [S1, S2, S3]
+    }.
+    
+    Legs = Period#flight_period.legs.
+* Syntactic sugar on top of primitive types
+* Converted to tuples at compilation time
 
 !SLIDE
 ## A concurrent language ##
@@ -109,22 +122,56 @@
 * Concurrency =/= Parallelism
 
 !SLIDE
-## Inter-process message queuing ##
+## Inter-process messaging ##
     @@@erlang
     loop() ->
       receive
-        hello -> io:format("Hello!~n");
+        hello -> io:format("Unleash the geeks!~n");
         _ -> loop()
       end
     end.
     
-    P = spawn(fun loop/0, []).
-    % <...>
+    P = spawn(fun loop/0).
+    % <0.55.0>
     P ! hello.
-    % Hello!
+    % Unleash the geeks!
+
+!SLIDE
+## A distributed language ##
+* A distributed runtime over a cluster of Erlang nodes.
+* Message passing between remote processes works the same.
+* Nodes can be added and removed at anytime.
+
+!SLIDE
+## A distributed language ##
+    @@@erlang
+    myhost$ erl -sname local
+    > node().
+    % local@myhost
+    ...
+    myhost$ erl -sname remote
+    > node().
+    % remote@myhost
+
+!SLIDE
+## A distributed language ##
+    @@@erlang
+    local> F = fun () ->
+                 receive
+                   whoareyou -> io:format("I am ~s!~n",
+                                          [node()])
+                 end
+               end.
+    local> spawn(F) ! whoareyou.
+    % I am local@myhost!
+    local> spawn('remote@myhost', F) ! whoareyou.
+    % I am remote@myhost!
 
 !SLIDE
 ## A pragmatic language ##
+* Not as pure as other functional languages
+* IO side effects
+* The *process dictionary* is mutable
 
 !SLIDE
 ## Runtime ##
@@ -134,7 +181,7 @@
 * An OS inside your OS
 
 !SLIDE
-## NIF ##
+## Native Implemented Function ##
     @@@C
     #include <erl_nif.h>
     static ERL_NIF_TERM
@@ -152,25 +199,24 @@
     }
 
 !SLIDE
-## NIF ##
-    @@@C
-    static ErlNifFunc nif_funcs[] = {
-      {"orthodromic_distance", 4, orthodromic_distance}
-    };
-    
-    ERL_NIF_INIT(sched_nif,
-                 nif_funcs, load, reload, NULL, NULL)
-
-!SLIDE
 ## Multicore support ##
 * SMP support implemented in 2006
 * Separate heaps vs. shared heap
 * Zero-copy messaging not here yet
+* Scheduler not tuned for High-Performance Computing
+
+!SLIDE
+## Erlang/OTP ##
+* Open Telecom Platform
+* High-level framework on top of Erlang processes
+* Processes coordination and monitoring
+* Reusable subsystem designs
 
 !SLIDE
 ## Erlang sweet spots ##
-* Binary protocols
+* Network (binary) protocols
 * Massively concurrent servers
+* Highly resilient applications
 
 !SLIDE
 ## References ##

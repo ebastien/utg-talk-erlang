@@ -30,6 +30,9 @@ a {
   color: #f3f0e7;
   text-decoration: none; }
 
+em {
+  color: #f3f0e7; }
+
 strong, b {
   font-weight: bolder;
   color: #9d869c; }
@@ -38,7 +41,8 @@ pre {
   -moz-border-radius: 10px 10px/10px 10px;
   -webkit-border-radius: 10px 10px/10px 10px;
   border-radius: 10px 10px/10px 10px;
-  margin: 1em 30px; }
+  margin: 1em 30px;
+  padding: .5em 10px; }
 
 code {
   font-family: "Courier New", Courier, monospace;
@@ -73,7 +77,7 @@ pre.sh_sourceCode .sh_specialchar {
   font-size: 2.5em; }
 
 .content > ul > li {
-  padding: .2em 0 .2em 0;
+  padding: .3em 0 .3em 0;
   margin-left: 0;
   line-height: 1.2em; }
 
