@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Erlang</title>
+
+  <meta name="viewport" content="width=device-width"/>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+  <script type="text/javascript" src="./js/coffee-script.js"></script>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
+
+  
+    <link rel="stylesheet" href="file/default.css" type="text/css"/>
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+      setupPreso(false, './');
+  });
+  </script>
+
+</head>
+
+<body>
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">z, ?</td><td>toggle help (this)</td></tr>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">shift-space, &larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>toggle debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c, t</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">n</td><td>toggle notes</td></tr>
+    <tr><td class="key">p</td><td>run preshow</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/1">
+<h1>Erlang</h1>
+
+<h2>Quick overview</h2>
+
+<div class="title_desc">
+  <ul>
+    <li>Emmanuel Bastien</li>
+    <li>January 2012</li>
+    <li>UtG</li>
+  </ul>
+</div>
+
+
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/2">
+<h2>Who is talking?</h2>
+
+<ul>
+<li>Emmanuel Bastien (@ebastien)</li>
+<li>Development Support for DEV-ORI</li>
+<li>Co-organizer of <a href="http://rivierarb.fr">Riviera Ruby Group</a>
+(<a href="http://twitter.com/rivierarb">@rivierarb</a>)</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/3">
+<h2>Why learning Erlang?</h2>
+
+<p><em>A language that doesn't affect the way you think about programming, is not worth knowing.</em></p>
+
+<div class="title_desc">
+  <ul><li>Alan Perlis</li></ul>
+</div>
+
+
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/4">
+<h2>History</h2>
+
+<ul>
+<li>A proprietary language at Ericsson from 1986 to 1998</li>
+<li>Initialy developped by Joe Armstrong</li>
+<li>Open sourced in 1998</li>
+<li>A language to tackle concrete, industrial issues in the
+field of telephony</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/5">
+<h2>Erlang today</h2>
+
+<ul>
+<li>Riak</li>
+<li>CouchDB / Membase</li>
+<li>RabbitMQ</li>
+<li>ejabberd</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/6">
+<h2>The Erlang language</h2>
+
+<ul>
+<li>Functional</li>
+<li>Simple</li>
+<li>Concurrent</li>
+<li>Distributed</li>
+<li>Pragmatic</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/7">
+<h2>A functional language</h2>
+
+<ul>
+<li>Single assignment and referential transparency</li>
+<li>Pattern matching</li>
+<li>Recursion and tail-call optimization</li>
+<li>Higher order functions</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/8">
+<h2>Single assignment</h2>
+
+<pre class="sh_erlang"><code>X = 2.
+X = 3. % Error! You told me that X equals 2 ...</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/9">
+<h2>Pattern matching</h2>
+
+<pre class="sh_erlang"><code>{{_,ok,X},[_|Y]} = {{0,ok,7.2}, [1,2,3]}.
+X. % 7.2
+Y. % [2,3]</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/10">
+<h2>Recursion</h2>
+
+<pre class="sh_erlang"><code>fac(0) -&gt; 1;
+fac(N) when N &gt; 0, is_integer(N) -&gt; N * fac(N-1).</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/11">
+<h2>Higher order functions</h2>
+
+<pre class="sh_erlang"><code>Y = lists:foldl(fun(X, Sum) -&gt; X + Sum end, 0, [1,2,3]).
+Y. % 6</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/12">
+<h2>A simple language</h2>
+
+<ul>
+<li>Dynamic typing</li>
+<li>7 primitive types: Integers, Atoms, Floats, Binaries, Funs, Tuples, Lists</li>
+<li>3 technical types: References, Pids, Ports</li>
+<li>Libraries for arrays, sets, dictionaries... derived from primitive types</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/13">
+<h2>Persistent data structures</h2>
+
+<ul>
+<li>No mutable state</li>
+<li>Easier to reason about</li>
+<li>Share without locking</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/14">
+<h2>Bit syntax</h2>
+
+<pre class="sh_erlang"><code>&lt;&lt;SourcePort:16, DestinationPort:16,
+  AckNumber:32,
+  DataOffset:4, _Reserved:4, Flags:8, WindowSize:16,
+  CheckSum: 16, UrgentPointer:16,
+  Payload/binary&gt;&gt; = SomeBinary.</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/15">
+<h2>Record syntax</h2>
+
+<pre class="sh_erlang"><code>-record(flight_period, {flight_key, legs, segments}).
+
+Period = #flight_period{
+  flight_key = K,
+  legs = [L1, L2],
+  segments = [S1, S2, S3]
+}.
+
+Legs = Period#flight_period.legs.</code></pre>
+
+<ul>
+<li>Syntactic sugar on top of primitive types</li>
+<li>Converted to tuples at compilation time</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/16">
+<h2>A concurrent language</h2>
+
+<ul>
+<li>A process is a, lightweight, first-class citizen.</li>
+<li>Inter-process communication follows the Actor model (i.e share nothing).</li>
+<li>Concurrency =/= Parallelism</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/17">
+<h2>Inter-process messaging</h2>
+
+<pre class="sh_erlang"><code>loop() -&gt;
+  receive
+    hello -&gt; io:format("Unleash the geeks!~n");
+    _ -&gt; loop()
+  end
+end.
+
+P = spawn(fun loop/0).
+% &lt;0.55.0&gt;
+P ! hello.
+% Unleash the geeks!</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/18">
+<h2>A distributed language</h2>
+
+<ul>
+<li>A distributed runtime over a cluster of Erlang nodes.</li>
+<li>Message passing between remote processes works the same.</li>
+<li>Nodes can be added and removed at anytime.</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/19">
+<h2>A distributed language</h2>
+
+<pre class="sh_erlang"><code>myhost$ erl -sname local
+&gt; node().
+% local@myhost
+...
+myhost$ erl -sname remote
+&gt; node().
+% remote@myhost</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/20">
+<h2>A distributed language</h2>
+
+<pre class="sh_erlang"><code>local&gt; F = fun () -&gt;
+             receive
+               whoareyou -&gt; io:format("I am ~s!~n",
+                                      [node()])
+             end
+           end.
+local&gt; spawn(F) ! whoareyou.
+% I am local@myhost!
+local&gt; spawn('remote@myhost', F) ! whoareyou.
+% I am remote@myhost!</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/21">
+<h2>A pragmatic language</h2>
+
+<ul>
+<li>Not as pure as other functional languages</li>
+<li>IO side effects</li>
+<li>The <em>process dictionary</em> is mutable</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/22">
+<h2>Runtime</h2>
+
+<ul>
+<li>Scales to millions of concurrent processes</li>
+<li>Enforces fault-isolation (a.k.a <em>let it crash</em>)</li>
+<li>Supports hot code loading</li>
+<li>An OS inside your OS</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/23">
+<h2>Native Implemented Function</h2>
+
+<pre class="sh_c"><code>#include &lt;erl_nif.h&gt;
+static ERL_NIF_TERM
+orthodromic_distance(ErlNifEnv *env, int argc,
+                     const ERL_NIF_TERM argv[])
+{
+  double LonA, LatA, LonB, LatB;
+  if (!enif_get_double(env, argv[0], &amp;LonA))
+    return enif_make_badarg(env);
+  // ...
+  double Distance = 2*EARTH_RADIUS*asin(
+    sqrt(SinLat*SinLat +
+         cos(LatA)*cos(LatB)*SinLon*SinLon));
+  return enif_make_double(env, Distance);
+}</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/24">
+<h2>Multicore support</h2>
+
+<ul>
+<li>SMP support implemented in 2006</li>
+<li>Separate heaps vs. shared heap</li>
+<li>Zero-copy messaging not here yet</li>
+<li>Scheduler not tuned for High-Performance Computing</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/25">
+<h2>Erlang/OTP</h2>
+
+<ul>
+<li>Open Telecom Platform</li>
+<li>High-level framework on top of Erlang processes</li>
+<li>Processes coordination and monitoring</li>
+<li>Reusable subsystem designs</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/26">
+<h2>Erlang sweet spots</h2>
+
+<ul>
+<li>Network (binary) protocols</li>
+<li>Massively concurrent servers</li>
+<li>Highly resilient applications</li>
+</ul>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="slides/01_slide/27">
+<h2>References</h2>
+
+<ul>
+<li><a href="http://www.erlang.org/doc">http://www.erlang.org/doc</a></li>
+<li><a href="http://learnyousomeerlang.com/">http://learnyousomeerlang.com/</a></li>
+<li><a href=""/></li>
+</ul>
+
+</div>
+</div></div>
+
+</body>
+</html>
